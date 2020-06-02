@@ -13,3 +13,11 @@ Source de la données
 - Caisse des Dépôts
 --> https://opendata.caissedesdepots.fr/explore/dataset/liste_territoiresindustrie141
 
+- Niveau géographique
+--> France
+
+- Type de géométrie
+--> Polygon
+
+- Finess de la maille
+--> EPCI
