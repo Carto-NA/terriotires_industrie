@@ -19,6 +19,131 @@ COMMENT ON SCHEMA met_zon IS 'Schéma pour les zonages de territoire';
 -- Tables : Création des tables
 ------------------------------------------------------------------------
 
+
+------------------------------------------------------------------------
+-- Table: ref_zonage.t_appartenance_geo_epci_terri_industrie
+
+-- DROP TABLE ref_zonage.t_appartenance_geo_epci_terri_industrie;
+CREATE TABLE ref_zonage.t_appartenance_geo_epci_terri_industrie
+(
+	id serial NOT NULL,
+    	code_insee_epci character varying(9),
+    	nom_epci character varying(150),
+	code_terri_industrie character varying(15),
+    	libelle_terri_industrie character varying(150),
+    	ville_principale character varying(150),
+    	numreg character varying(3),
+    	nomreg character varying(150),
+	annee_donnees character varying(4),
+	date_import date,
+	date_maj date,
+	CONSTRAINT t_appartenance_geo_epci_terri_industrie_pkey PRIMARY KEY (id),
+    	CONSTRAINT t_appartenance_geo_epci_terri_industrie_uniq UNIQUE (code_insee_epci, annee_donnees)
+);
+
+--
+COMMENT ON TABLE ref_zonage.t_appartenance_geo_epci_terri_industrie IS 'Table d''appartenance des EPCI aux territoires d''industrie';
+
+--
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.id IS 'Identifiant';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.code_insee_epci IS 'Code INSEE de l''EPCI porteuse du territoire';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.nom_epci IS 'Nom de l''EPCI porteuse du territoire';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.libelle_terri_industrie IS 'Code du territoire d''industrie';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.libelle_terri_industrie IS 'Nom du territoire d''industrie';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.ville_principale IS 'Ville principale du territoire d''industrie';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.numreg IS 'Code de la région';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.nomreg IS 'Nom de la région';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.annee_donnees IS 'Année de la données pour l''historisation';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.date_import IS 'Date d''import de la donnée';
+COMMENT ON COLUMN ref_zonage.t_appartenance_geo_epci_terri_industrie.date_maj IS 'Date de mise à jour de la donnée';
+
+
+-- Ajout des données
+INSERT INTO ref_zonage.t_appartenance_geo_epci_terri_industrie (
+	code_insee_epci, nom_epci, libelle_terri_industrie, ville_principale, 
+	numreg, nomreg, annee_donnees, date_import, date_maj
+) 
+SELECT  
+	code_insee_, nom_de_l_ep, libelle_ter,  ville_princ,
+	insee_reg, region, '2020', '09-06-2020', null
+FROM z_maj.liste_territoiresindustrie141 t1
+join ref_adminexpress.r_admexp_region_fr t2
+on upper(unaccent_string(region)) = nom_reg;
+
+-- Mise à jour des codes et des libellés
+-- Angoulême Cognac
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
+	SET code_terri_industrie='T_INDUST_160001',	libelle_terri_industrie='Angoulême Cognac',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Angoulême Cognac';
+-- Rochefort
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
+	SET code_terri_industrie='T_INDUST_170001', libelle_terri_industrie='Rochefort',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Rochefort';
+-- Niort Haut-Val-de-Sèvre
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
+	SET code_terri_industrie='T_INDUST_790001', libelle_terri_industrie='Niort Haut-Val-de-Sèvre',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Niortais';
+-- Nord Poitou
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
+	SET code_terri_industrie='T_INDUST_798601', libelle_terri_industrie='Nord Poitou',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Bressuire';
+-- Grand Châtellerault
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
+	SET code_terri_industrie='T_INDUST_860001', libelle_terri_industrie='Grand Châtellerault',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Grand Châtellerault';
+-- Limoges Métropole ELAN
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
+	SET code_terri_industrie='T_INDUST_870001', libelle_terri_industrie='Limoges Métropole ELAN',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Limoges Métropole';
+-- Aubusson La Souterraine
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
+	SET code_terri_industrie='T_INDUST_230001', libelle_terri_industrie='Sud et Ouest Creuse',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Aubusson La Souterraine';
+-- Bassin de Brive-Périgord
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
+	SET code_terri_industrie='T_INDUST_241901', libelle_terri_industrie='Bassin de Brive-Périgord',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Bassin de Brive - Périgord';
+-- Périgord-Limousin
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
+	SET code_terri_industrie='T_INDUST_248701', libelle_terri_industrie='Périgord-Limousin',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Interdépartemental Dordogne / Haute-Vienne';
+-- Libournais
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
+	SET code_terri_industrie='T_INDUST_330002', libelle_terri_industrie='Libournais',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Libournais';
+-- Val de Garonne Guyenne Gascogne
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
+	SET code_terri_industrie='T_INDUST_473301', libelle_terri_industrie='Val de Garonne Guyenne Gascogne',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Val de Garonne Guyenne Gascogne';
+-- Pays Adour Landes océanes
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
+	SET code_terri_industrie='T_INDUST_470001', libelle_terri_industrie='Pays Adour Landes océanes',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Capbreton Dax';
+-- Pays Basque
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
+	SET code_terri_industrie='T_INDUST_640001', libelle_terri_industrie='Pays Basque',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Pays Basque';
+-- Lacq-Pau - Tarbes
+UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
+	SET code_terri_industrie='T_INDUST_640002', libelle_terri_industrie='Lacq-Pau - Tarbes',
+	date_maj='09-06-2020'
+WHERE libelle_terri_industrie = 'Lacq-Pau - Tarbes';
+
+
+
 ------------------------------------------------------------------------
 -- Table: met_zon.m_zon_terri_industrie_geo
 
