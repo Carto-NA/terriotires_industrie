@@ -25,25 +25,25 @@ COMMENT ON SCHEMA met_zon IS 'Schéma pour les zonages de territoire';
 -- DROP TABLE met_zon.m_zon_terri_industrie_geo;
 CREATE TABLE met_zon.m_zon_terri_industrie_geo
 (
-	  id serial NOT NULL,
-    code_insee_epci character varying(9),
-    nom_epci character varying(150),
-    libelle_terri_industrie character varying(150),
-    ville_principale character varying(150),
-    numreg character varying(3),
-    nomreg character varying(150),
-	  commentaires text,
-	  annee_donnees character varying(4),
-	  date_import date,
-	  date_maj date,
-	  geom_valide  boolean DEFAULT false,
-	  geom geometry(MultiPolygon,2154),
-    CONSTRAINT m_zon_terri_industrie_geo_pkey PRIMARY KEY (id),
-    CONSTRAINT m_zon_terri_industrie_geo_uniq UNIQUE (code_insee_epci, annee_donnees)
+	id serial NOT NULL,
+    	code_insee_epci character varying(9),
+    	nom_epci character varying(150),
+    	libelle_terri_industrie character varying(150),
+    	ville_principale character varying(150),
+    	numreg character varying(3),
+    	nomreg character varying(150),
+	commentaires text,
+	annee_donnees character varying(4),
+	date_import date,
+	date_maj date,
+	geom_valide  boolean DEFAULT false,
+	geom geometry(MultiPolygon,2154),
+	CONSTRAINT m_zon_terri_industrie_geo_pkey PRIMARY KEY (id),
+    	CONSTRAINT m_zon_terri_industrie_geo_uniq UNIQUE (code_insee_epci, annee_donnees)
 );
 
 --
-COMMENT ON TABLE met_zon.m_zon_terri_industrie_geo IS 'Zonage des territoires d''industrie';
+COMMENT ON TABLE met_zon.m_zon_terri_industrie_geo IS 'Table d''appartenance des EPCI aux territoires d''industrie';
 
 --
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.id IS 'Identifiant';
