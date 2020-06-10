@@ -73,72 +73,72 @@ on upper(unaccent_string(region)) = nom_reg;
 -- Mise à jour des codes et des libellés
 -- Angoulême Cognac
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
-	SET code_terri_industrie='T_INDUST_160001',	libelle_terri_industrie='Angoulême Cognac',
+	SET code_terri_industrie='1600TI01',	libelle_terri_industrie='Angoulême Cognac',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Angoulême Cognac';
 -- Rochefort
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
-	SET code_terri_industrie='T_INDUST_170001', libelle_terri_industrie='Rochefort',
+	SET code_terri_industrie='1700TI01', libelle_terri_industrie='Rochefort',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Rochefort';
 -- Niort Haut-Val-de-Sèvre
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
-	SET code_terri_industrie='T_INDUST_790001', libelle_terri_industrie='Niort Haut-Val-de-Sèvre',
+	SET code_terri_industrie='7900TI01', libelle_terri_industrie='Niort Haut-Val-de-Sèvre',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Niortais';
 -- Nord Poitou
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
-	SET code_terri_industrie='T_INDUST_798601', libelle_terri_industrie='Nord Poitou',
+	SET code_terri_industrie='7986TI01', libelle_terri_industrie='Nord Poitou',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Bressuire';
 -- Grand Châtellerault
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
-	SET code_terri_industrie='T_INDUST_860001', libelle_terri_industrie='Grand Châtellerault',
+	SET code_terri_industrie='8600TI01', libelle_terri_industrie='Grand Châtellerault',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Grand Châtellerault';
 -- Limoges Métropole ELAN
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
-	SET code_terri_industrie='T_INDUST_870001', libelle_terri_industrie='Limoges Métropole ELAN',
+	SET code_terri_industrie='8700TI01', libelle_terri_industrie='Limoges Métropole ELAN',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Limoges Métropole';
 -- Aubusson La Souterraine
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
-	SET code_terri_industrie='T_INDUST_230001', libelle_terri_industrie='Sud et Ouest Creuse',
+	SET code_terri_industrie='2300TI01', libelle_terri_industrie='Sud et Ouest Creuse',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Aubusson La Souterraine';
 -- Bassin de Brive-Périgord
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
-	SET code_terri_industrie='T_INDUST_241901', libelle_terri_industrie='Bassin de Brive-Périgord',
+	SET code_terri_industrie='2419TI01', libelle_terri_industrie='Bassin de Brive-Périgord',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Bassin de Brive - Périgord';
 -- Périgord-Limousin
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
-	SET code_terri_industrie='T_INDUST_248701', libelle_terri_industrie='Périgord-Limousin',
+	SET code_terri_industrie='2487TI01', libelle_terri_industrie='Périgord-Limousin',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Interdépartemental Dordogne / Haute-Vienne';
 -- Libournais
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
-	SET code_terri_industrie='T_INDUST_330002', libelle_terri_industrie='Libournais',
+	SET code_terri_industrie='3300TI02', libelle_terri_industrie='Libournais',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Libournais';
 -- Val de Garonne Guyenne Gascogne
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
-	SET code_terri_industrie='T_INDUST_473301', libelle_terri_industrie='Val de Garonne Guyenne Gascogne',
+	SET code_terri_industrie='4733TI01', libelle_terri_industrie='Val de Garonne Guyenne Gascogne',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Val de Garonne Guyenne Gascogne';
 -- Pays Adour Landes océanes
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
-	SET code_terri_industrie='T_INDUST_470001', libelle_terri_industrie='Pays Adour Landes océanes',
+	SET code_terri_industrie='4700TI01', libelle_terri_industrie='Pays Adour Landes océanes',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Capbreton Dax';
 -- Pays Basque
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie
-	SET code_terri_industrie='T_INDUST_640001', libelle_terri_industrie='Pays Basque',
+	SET code_terri_industrie='6400TI01', libelle_terri_industrie='Pays Basque',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Pays Basque';
 -- Lacq-Pau - Tarbes
 UPDATE ref_zonage.t_appartenance_geo_epci_terri_industrie 
-	SET code_terri_industrie='T_INDUST_640002', libelle_terri_industrie='Lacq-Pau - Tarbes',
+	SET code_terri_industrie='6400TI02', libelle_terri_industrie='Lacq-Pau - Tarbes',
 	date_maj='09-06-2020'
 WHERE libelle_terri_industrie = 'Lacq-Pau - Tarbes';
 
