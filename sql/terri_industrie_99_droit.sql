@@ -10,5 +10,9 @@
 ------------------------------------------------------------------------
 
 -- Tables : met_zon.m_zon_terri_industrie_geo
+GRANT ALL ON TABLE ref_zonage.t_appartenance_geo_epci_terri_industrie TO "pre-sig-usr";
+GRANT SELECT ON TABLE ref_zonage.t_appartenance_geo_epci_terri_industrie TO "pre-sig-ro";
+
+-- Tables : met_zon.m_zon_terri_industrie_geo
 GRANT ALL ON TABLE met_zon.m_zon_terri_industrie_geo TO "pre-sig-usr";
 GRANT SELECT ON TABLE met_zon.m_zon_terri_industrie_geo TO "pre-sig-ro";
