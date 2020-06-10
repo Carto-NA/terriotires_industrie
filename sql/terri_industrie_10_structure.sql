@@ -153,6 +153,7 @@ CREATE TABLE met_zon.m_zon_terri_industrie_geo
 	id serial NOT NULL,
     	code_insee_epci character varying(9),
     	nom_epci character varying(150),
+	code_terri_industrie character varying(20),
     	libelle_terri_industrie character varying(150),
     	ville_principale character varying(150),
     	numreg character varying(3),
@@ -174,6 +175,7 @@ COMMENT ON TABLE met_zon.m_zon_terri_industrie_geo IS 'Table d''appartenance des
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.id IS 'Identifiant';
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.code_insee_epci IS 'Code INSEE de l''EPCI porteuse du territoire';
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.nom_epci IS 'Nom de l''EPCI porteuse du territoire';
+COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.code_terri_industrie IS 'Code du territoire d''industrie';
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.libelle_terri_industrie IS 'Nom du territoire d''industrie';
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.ville_principale IS 'Ville principale du territoire d''industrie';
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.numreg IS 'Code de la région';
@@ -187,18 +189,15 @@ COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.geom IS 'Géométrie polygon
 
 -- Ajout des données
 INSERT INTO met_zon.m_zon_terri_industrie_geo (
-	code_insee_epci, nom_epci, libelle_terri_industrie, ville_principale, 
-	numreg, nomreg, commentaires, 
-	annee_donnees, date_import, date_maj, geom_valide, geom
-) 
-SELECT  
-	code_insee_, nom_de_l_ep, libelle_ter,  ville_princ,
-	insee_reg, region, null,
-	'2020', '09-06-2020', null, false, ST_Transform(t1.geom, 2154)
-FROM z_maj.liste_territoiresindustrie141 t1
-join ref_adminexpress.r_admexp_region_fr t2
-on upper(unaccent_string(region)) = nom_reg;
-
+	code_terri_industrie, libelle_terri_industrie, numreg, nomreg, 
+	annee_donnees, date_import, date_maj, geom
+)
+SELECT code_terri_industrie, libelle_terri_industrie, numreg, nomreg, 
+ 	annee_donnees, date_import, date_maj, ST_Multi(ST_Union(a.geom)) AS geom
+   FROM ref_adminexpress.r_admexp_epci_fr a
+   INNER JOIN ref_zonage.t_appartenance_geo_epci_terri_industrie b
+   ON a.code_epci = b.code_insee_epci AND annee_donnees = '2020' and numreg = '75'
+  GROUP BY code_terri_industrie, libelle_terri_industrie, numreg, nomreg, annee_donnees, date_import, date_maj;
 
 ------------------------------------------------------------------------ 
 -- Vues : Création des vues
