@@ -151,8 +151,6 @@ WHERE libelle_terri_industrie = 'Lacq-Pau - Tarbes';
 CREATE TABLE met_zon.m_zon_terri_industrie_geo
 (
 	id serial NOT NULL,
-    	code_insee_epci character varying(9),
-    	nom_epci character varying(150),
 	code_terri_industrie character varying(20),
     	libelle_terri_industrie character varying(150),
     	ville_principale character varying(150),
@@ -173,8 +171,6 @@ COMMENT ON TABLE met_zon.m_zon_terri_industrie_geo IS 'Table d''appartenance des
 
 --
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.id IS 'Identifiant';
-COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.code_insee_epci IS 'Code INSEE de l''EPCI porteuse du territoire';
-COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.nom_epci IS 'Nom de l''EPCI porteuse du territoire';
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.code_terri_industrie IS 'Code du territoire d''industrie';
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.libelle_terri_industrie IS 'Nom du territoire d''industrie';
 COMMENT ON COLUMN met_zon.m_zon_terri_industrie_geo.ville_principale IS 'Ville principale du territoire d''industrie';
