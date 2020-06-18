@@ -21,3 +21,7 @@ Source de la données
 
 - Finess de la maille
 --> EPCI
+
+Thème : Territoire à enjeux
+
+Mots-clés : industrie, zonage, territoire, économie
